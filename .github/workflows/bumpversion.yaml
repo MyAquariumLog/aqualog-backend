@@ -17,7 +17,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          ssh-key: "${{ secrets.CZ_KEY }}"
 
       - id: cz
         name: Create bump and changelog
@@ -26,16 +25,7 @@ jobs:
           push: false
 
       - name: Push using ssh
-        run: |
-          git push origin main --tags
-
-      # - name: Release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     body_path: "CHANGELOG.md"
-      #     tag_name: ${{ env.REVISION }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push https://x-access-token:${{ github.token }}@github.com/${{ github.repository }} HEAD:main --tags
 
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
