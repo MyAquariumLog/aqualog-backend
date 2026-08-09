@@ -64,6 +64,19 @@
 - bump pytest-html from 4.1.1 to 4.2.0
 - remove redundant main.py
 
+## v0.14.0 (2026-08-09)
+
+### Feat
+
+- add journal operations to API
+- user groups from auth
+- **profile**: expose OAuth group membership on /me
+
+### Fix
+
+- remove dead FileHandler that leaked an open file every request
+- bump cryptography in the pip group across 1 directory
+
 ## v0.13.1 (2026-08-02)
 
 ### Refactor
