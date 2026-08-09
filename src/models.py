@@ -231,3 +231,26 @@ class AquariumMeasurement(Base):
 
     unit: Mapped[Unit] = relationship("Unit", foreign_keys=[unit_id])
     raw_unit: Mapped[Unit] = relationship("Unit", foreign_keys=[raw_unit_id])
+
+
+class AquariumJournalEntry(Base):
+    __tablename__ = "aquarium_journal_entries"
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid(), primary_key=True, default=uuid4)
+    aquarium_id: Mapped[uuid.UUID] = mapped_column(
+        Uuid(),
+        ForeignKey("aquariums.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    entry_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    message: Mapped[str] = mapped_column(String(2000), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=_utc_now
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=_utc_now,
+        onupdate=_utc_now,
+    )
