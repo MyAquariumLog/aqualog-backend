@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          # Can't use the agent's auth here because the commitizen action needs to push back to the repo, so we need to use a deploy key instead of the default GITHUB_TOKEN. The GITHUB_TOKEN does not trigger workflows on push, so we need to use a deploy key that has write access to the repo.
+          ssh-key: "${{ secrets.BACKEND_DEPLOY_KEY }}"
 
       - id: cz
         name: Create bump and changelog
@@ -25,7 +27,8 @@ jobs:
           push: false
 
       - name: Push using ssh
-        run: git push https://x-access-token:${{ github.token }}@github.com/${{ github.repository }} HEAD:main --tags
+        run: |
+          git push origin main --tags
 
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
