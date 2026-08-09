@@ -64,6 +64,12 @@
 - bump pytest-html from 4.1.1 to 4.2.0
 - remove redundant main.py
 
+## v0.14.1 (2026-08-09)
+
+### Fix
+
+- allow manual trigger of workflow
+
 ## v0.14.0 (2026-08-09)
 
 ### Feat
