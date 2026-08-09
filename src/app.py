@@ -17,6 +17,7 @@ from src.config import Settings, ensure_auth_mode_configured, load_settings
 from src.db import init_database
 from src.logging_middleware import RequestLoggingMiddleware
 from src.responses import error_response, success_response
+from src.routers.aquarium_journal_entries import build_journal_router
 from src.routers.aquarium_measurements import build_aquarium_measurement_router
 from src.routers.aquarium_parameter_thresholds import build_aquarium_parameter_threshold_router
 from src.routers.aquariums import build_aquarium_router
@@ -150,6 +151,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(build_aquarium_router(), prefix=versioned_prefix)
     app.include_router(build_aquarium_measurement_router(), prefix=versioned_prefix)
     app.include_router(build_aquarium_parameter_threshold_router(), prefix=versioned_prefix)
+    app.include_router(build_journal_router(), prefix=versioned_prefix)
     app.include_router(build_parameter_router(), prefix=versioned_prefix)
     app.include_router(build_unit_router(), prefix=versioned_prefix)
 

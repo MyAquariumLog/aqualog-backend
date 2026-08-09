@@ -5,5 +5,43 @@
   "attribution": {
     "commit": "",
     "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(AQUALOG_APP_ENV=dev AQUALOG_DB_HOST=localhost AQUALOG_DB_PORT=5432 AQUALOG_DB_NAME=aqualog AQUALOG_DB_USER=aqualog AQUALOG_DB_PASSWORD=aqualog AQUALOG_OAUTH_ISSUER_URL=https://auth.example.com/application/o/aqualog AQUALOG_OAUTH_AUDIENCE=test poetry run alembic upgrade head)",
+      "Bash(AQUALOG_APP_ENV=dev AQUALOG_DB_HOST=localhost AQUALOG_DB_PORT=5432 AQUALOG_DB_NAME=aqualog AQUALOG_DB_USER=aqualog AQUALOG_DB_PASSWORD=b1nzy7hmuh1A3ROLfwC7J4braQCjEPS0jE2ZFqOLa3ULvMgh AQUALOG_OAUTH_ISSUER_URL=https://auth.example.com/application/o/aqualog AQUALOG_OAUTH_AUDIENCE=test poetry run alembic revision --autogenerate -m \"add_aquarium_journal_entries\")",
+      "Bash(AQUALOG_APP_ENV=dev AQUALOG_DB_HOST=localhost AQUALOG_DB_PORT=5432 AQUALOG_DB_NAME=aqualog AQUALOG_DB_USER=aqualog AQUALOG_DB_PASSWORD=b1nzy7hmuh1A3ROLfwC7J4braQCjEPS0jE2ZFqOLa3ULvMgh AQUALOG_OAUTH_ISSUER_URL=https://auth.example.com/application/o/aqualog AQUALOG_OAUTH_AUDIENCE=test poetry run alembic upgrade head)",
+      "Bash(AQUALOG_APP_ENV=dev AQUALOG_DB_HOST=localhost AQUALOG_DB_PORT=5433 AQUALOG_DB_NAME=aqualog AQUALOG_DB_USER=aqualog AQUALOG_DB_PASSWORD=aqualog AQUALOG_OAUTH_ISSUER_URL=https://auth.example.com/application/o/aqualog AQUALOG_OAUTH_AUDIENCE=test poetry run alembic upgrade head)",
+      "Bash(AQUALOG_APP_ENV=test poetry run coverage erase)",
+      "Bash(AQUALOG_APP_ENV=test poetry run pytest *)",
+      "Bash(AQUALOG_APP_ENV=test timeout 120 poetry run pytest -q --cov=src --cov-append *)",
+      "Bash(AQUALOG_APP_ENV=test timeout 30 poetry run pytest -v tests/test_aquarium_measurements.py::test_measurement_routes_reject_unsupported_path_parameter)",
+      "Bash(AQUALOG_APP_ENV=test timeout 300 poetry run pytest -q --cov=src --cov-append *)",
+      "Bash(AQUALOG_APP_ENV=test timeout 60 poetry run pytest -q --cov=src --cov-append tests/test_parameter_repository.py tests/test_parameters.py)",
+      "Bash(AQUALOG_APP_ENV=test timeout 60 poetry run pytest -v tests/test_aquarium_measurements.py)",
+      "Bash(AQUALOG_APP_ENV=test timeout 90 poetry run pytest -q tests/test_aquarium_measurement_repository.py tests/test_aquarium_parameter_threshold_repository.py tests/test_aquarium_repository.py)",
+      "Bash(AQUALOG_APP_ENV=test timeout 90 poetry run pytest -v -p no:cacheprovider)",
+      "Bash(break)",
+      "Bash(docker compose *)",
+      "Bash(docker exec *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(export AQUALOG_APP_ENV=dev AQUALOG_DB_HOST=localhost AQUALOG_DB_PORT=5432 AQUALOG_DB_NAME=aqualog AQUALOG_DB_USER=aqualog AQUALOG_DB_PASSWORD=b1nzy7hmuh1A3ROLfwC7J4braQCjEPS0jE2ZFqOLa3ULvMgh AQUALOG_OAUTH_ISSUER_URL=https://auth.example.com/application/o/aqualog AQUALOG_OAUTH_AUDIENCE=test)",
+      "Bash(git -C /home/mark/dev/aqualog/backend status --short)",
+      "Bash(git mv *)",
+      "Bash(git rm *)",
+      "Bash(openspec list *)",
+      "Bash(openspec validate *)",
+      "Bash(pip show *)",
+      "Bash(poetry run *)",
+      "Bash(poetry show *)",
+      "Bash(python3 -c \"import httpx2\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['progress']\\); print\\(d['state']\\)\")",
+      "Bash(task token *)",
+      "Bash(wait *)",
+      "Bash(xargs -I{} sh -c 'echo {}; grep -E \"^revision|^down_revision\" {}')",
+      "Read(//tmp/**)",
+      "Skill(openspec-sync-specs)"
+    ]
   }
 }
