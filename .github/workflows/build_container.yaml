@@ -64,7 +64,7 @@ jobs:
         with:
           context: ./mail_proxy
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/cylindric/aqualog-mail-proxy:latest
+          tags: ghcr.io/MyAquariumLog/aqualog-mail-proxy:latest
           labels: |
             org.opencontainers.image.source=${{ github.repository }}
             org.opencontainers.image.version=1.0.0
@@ -78,7 +78,6 @@ jobs:
           subject-name: ghcr.io/${{ github.repository}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
-
 
   deploy:
     needs: build
